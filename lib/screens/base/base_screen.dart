@@ -25,7 +25,9 @@ class _BaseScreenState extends State<BaseScreen> {
 
       _drawerSubcription?.cancel();
       _drawerSubcription = _drawerBloc.outPage.listen((page) {
-        _pageController.jumpToPage(page);
+        try {
+          _pageController.jumpToPage(page);
+        } catch (e) {}
       });
     }
   }
