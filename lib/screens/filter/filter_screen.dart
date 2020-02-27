@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xlo/models/filter.dart';
+import 'package:xlo/screens/filter/widgets/animated_button.dart';
 import 'package:xlo/screens/filter/widgets/order_by_field.dart';
 import 'package:xlo/screens/filter/widgets/price_range_field.dart';
 import 'package:xlo/screens/filter/widgets/section_title.dart';
@@ -12,6 +13,7 @@ class FilterScreen extends StatefulWidget {
 
 class _FilterScreenState extends State<FilterScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class _FilterScreenState extends State<FilterScreen> {
           Form(
             key: _formKey,
             child: ListView(
+              controller: _scrollController,
               padding: const EdgeInsets.all(16),
               children: <Widget>[
                 const SectionTitle(title: "Ordernar por"),
@@ -36,9 +39,14 @@ class _FilterScreenState extends State<FilterScreen> {
                   initialValue: VENDOR_TYPE_PARTICULAR,
                   onSaved: (v) {},
                 ),
+                const SizedBox(height: 100),
               ],
             ),
-          )
+          ),
+          AnimatedButton(
+            scrollController: _scrollController,
+            onTap: () {},
+          ),
         ],
       ),
     );
