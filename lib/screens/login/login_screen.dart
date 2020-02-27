@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xlo/blocs/login/field_state.dart';
 import 'package:xlo/blocs/login/login_bloc.dart';
+import 'package:xlo/screens/login/widgets/login_button.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -9,7 +10,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   LoginBloc _loginBloc = LoginBloc();
 
   @override
@@ -105,6 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   );
                 },
               ),
+              LoginButton(),
             ],
           ),
         ),
