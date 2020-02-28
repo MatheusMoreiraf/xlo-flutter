@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xlo/helpers/format_fild.dart';
 import 'package:xlo/screens/signup/widgets/field_title.dart';
+import 'package:xlo/screens/signup/widgets/password_field.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -28,9 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             TextFormField(
               decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Exemplo: João S.'
-              ),
+                  border: OutlineInputBorder(), hintText: 'Exemplo: João S.'),
               validator: (text) {
                 if (text.length < 6)
                   return 'Apelido muito curto';
@@ -38,6 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   return null;
               },
             ),
+            SizedBox(height: 26),
             const FieldTitle(
               title: 'E-mail',
               subtitle: 'Enviaremos um e-mail de confirmação.',
@@ -45,7 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             TextFormField(
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
+                border: OutlineInputBorder(),
               ),
               validator: (text) {
                 if (text.length < 6 || !isEmailValid(text))
@@ -54,10 +54,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   return null;
               },
             ),
+            SizedBox(height: 26),
             const FieldTitle(
               title: 'Senha',
               subtitle: 'Use letras, números e caracteres especiais.',
             ),
+            PasswordField(),
           ],
         ),
       ),
