@@ -59,7 +59,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               title: 'Senha',
               subtitle: 'Use letras, números e caracteres especiais.',
             ),
-            PasswordField(),
+            PasswordField(
+              onSaved: (text) {},
+            ),
           ],
         ),
       ),
