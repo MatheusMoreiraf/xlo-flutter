@@ -2,10 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:xlo/screens/create/widgets/image_source_sheet.dart';
 
 class ImageField extends StatelessWidget {
+  final FormFieldSetter<List> onSaved;
+  final List initialValue;
+
+  ImageField({@required this.initialValue, @required this.onSaved});
+
   @override
   Widget build(BuildContext context) {
     return FormField<List>(
-      initialValue: [],
+      initialValue: initialValue,
+      validator: (images) {
+        if (images.isEmpty) return 'Campo obrigatório';
+        return null;
+      },
+      onSaved: onSaved,
       builder: (state) {
         return Column(
           children: <Widget>[
@@ -90,7 +100,22 @@ class ImageField extends StatelessWidget {
                   );
                 },
               ),
-            )
+            ),
+            if (state.hasError)
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal: 16,
+                ),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  state.errorText,
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 12,
+                  ),
+                ),
+              )
           ],
         );
       },
