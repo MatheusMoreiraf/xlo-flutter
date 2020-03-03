@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xlo/screens/create/widgets/image_source_sheet.dart';
 
 class ImageField extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class ImageField extends StatelessWidget {
         return Column(
           children: <Widget>[
             Container(
-              color: Colors.grey[140],
+              color: Colors.grey[200],
               height: 140,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -17,10 +18,22 @@ class ImageField extends StatelessWidget {
                 itemBuilder: (context, index) {
                   if (index == state.value.length)
                     return GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) => ImageSourceSheet((image) {
+                            if (image != null)
+                              state.didChange(state.value..add(image));
+                            Navigator.of(context).pop();
+                          }),
+                        );
+                      },
                       child: Padding(
                         padding: const EdgeInsets.only(
-                            left: 16, top: 16, bottom: 16),
+                          left: 16,
+                          top: 16,
+                          bottom: 16,
+                        ),
                         child: CircleAvatar(
                           backgroundColor: Colors.grey[300],
                           radius: 52,
@@ -41,7 +54,40 @@ class ImageField extends StatelessWidget {
                         ),
                       ),
                     );
-                  return Container();
+                  return GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => Dialog(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Image.file(state.value[index]),
+                              FlatButton(
+                                onPressed: () {
+                                  state.didChange(state.value..removeAt(index));
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('Escluir'),
+                                color: Colors.red,
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 16,
+                        top: 16,
+                        bottom: 16,
+                      ),
+                      child: CircleAvatar(
+                        radius: 52,
+                        backgroundImage: FileImage(state.value[index]),
+                      ),
+                    ),
+                  );
                 },
               ),
             )
