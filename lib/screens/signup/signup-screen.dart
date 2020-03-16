@@ -37,6 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         key: _formKey,
         child: StreamBuilder<SignUpBlocState>(
             stream: _signUpBloc.outState,
+            initialData: SignUpBlocState(SignUpState.IDLE),
             builder: (context, snapshot) {
               return ListView(
                 padding: const EdgeInsets.all(16),

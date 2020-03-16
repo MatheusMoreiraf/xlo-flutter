@@ -1,6 +1,7 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:xlo/api/api_postalcode.dart';
 import 'package:xlo/common/custom_drawer/custom_drawer.dart';
 import 'package:xlo/screens/create/widgets/image_field.dart';
 
@@ -92,7 +93,7 @@ class _CreateScreenState extends State<CreateScreen> {
               height: 50,
               child: RaisedButton(
                 onPressed: () {
-                  if (_formKey.currentState.validate()) {}
+                  getAddressFromAPI("85.000-000");
                 },
                 color: Colors.pink,
                 child: Text(
