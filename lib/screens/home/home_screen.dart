@@ -90,6 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
               stream: _homeBloc.outAd,
               initialData: [],
               builder: (context, snapshot) {
+                if(snapshot.data == null)
+                  return Container();
                 return ListView.builder(
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index) {
