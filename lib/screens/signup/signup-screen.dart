@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xlo/blocs/signup_bloc.dart';
-import 'package:xlo/helpers/format_fild.dart';
+import 'package:xlo/helpers/format_field.dart';
 import 'package:xlo/screens/signup/widgets/field_title.dart';
 import 'package:xlo/screens/signup/widgets/password_field.dart';
 

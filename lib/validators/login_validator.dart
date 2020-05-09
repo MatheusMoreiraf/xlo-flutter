@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:xlo/blocs/login/field_state.dart';
-import 'package:xlo/helpers/format_fild.dart';
+import 'package:xlo/helpers/format_field.dart';
 
 class LoginValidator {
   final emailValidator = StreamTransformer<String, FieldState>.fromHandlers(

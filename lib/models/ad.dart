@@ -8,8 +8,10 @@ class Ad {
   num price;
   bool hidPhone;
 
+  DateTime dateCreated = DateTime.now();
+
   @override
   String toString() {
-    return '$images, $title, $description, $address, $price, $hidPhone';
+    return '$images, $title, $description, $address, $price, $hidPhone, $dateCreated';
   }
 }

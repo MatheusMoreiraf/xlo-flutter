@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:xlo/helpers/format_fild.dart';
+import 'package:xlo/helpers/format_field.dart';
 import 'package:xlo/models/filter.dart';
 
 class PriceRangeField extends StatelessWidget {
